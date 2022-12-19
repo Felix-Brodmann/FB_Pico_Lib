@@ -1,0 +1,16 @@
+functions:
+
+	bool	is_pressed(int GPIO_Pin)
+	
+	explanation:
+
+		Checking if a Button is pressed.
+
+	variables:
+
+		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
+
+	returns:
+
+		false		= Button is not pressed. / GPIO_Pin is not between 0 and 28.
+		true		= Button is pressed.
