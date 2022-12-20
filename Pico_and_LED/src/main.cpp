@@ -6,32 +6,39 @@ int main() {
     
     stdio_init_all();
 
-    Pico_and_LED LED;
-    uint GPIO_number = 16;
+    Pico_and_LED LED(16);
 
     while(1) {
 
-        printf("LED on\n");
+        LED.turn_LED_on();
 
-        LED.turn_LED_on(GPIO_number);
+        if(LED.get_LED_state() == 1) {
+
+            printf("LED on\n");
+
+        }
 
         sleep_ms(1000);
 
-        printf("LED off\n");
-
-        LED.turn_LED_off(GPIO_number);
+        LED.turn_LED_off();
         
+        if(LED.get_LED_state() == 0) {
+
+            printf("LED off\n");
+
+        }
+
         sleep_ms(1000);
 
         printf("LED is now blinking for 10 times with a frequency of 1 Hz\n");
 
-        LED.let_LED_blink(GPIO_number, 1, 10);
+        LED.let_LED_blink(1, 10);
         
-        sleep_ms(1000);
+        sleep_ms(5000);
 
         printf("LED is now blinking forever\n");
 
-        LED.let_LED_blink(GPIO_number, 1, -1);
+        LED.let_LED_blink(1, -1);
 
     }
 
