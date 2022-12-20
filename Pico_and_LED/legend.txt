@@ -38,6 +38,20 @@ functions:
 
 	------------------------------------------------------------------------------------------------------
 
+	int	get_LED_state()
+
+	explanation:
+
+		Getting the state of a LED object.
+
+	returns:
+
+		-1		= GPIO_Pin is not between 0 and 28.
+		0		= LED is on.
+		1		= LED is off.
+
+	------------------------------------------------------------------------------------------------------
+
 	int	let_LED_blink(float frequency, int stop)
 
 	explanation:
