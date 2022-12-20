@@ -1,48 +1,72 @@
 #include "Pico_and_LED.h"
 
-int Pico_and_LED::turn_LED_on(int GPIO_Pin) {
+Pico_and_LED::Pico_and_LED(int GPIO_Pin) {
 
-    if(GPIO_Pin < 0 && GPIO_Pin > 28) {
+    GPIO_Num = GPIO_Pin;
+
+    gpio_init(GPIO_Num);
+
+    gpio_set_dir(GPIO_Num, true);
+
+}
+
+int Pico_and_LED::turn_LED_on() {
+
+    if(GPIO_Num < 0 && GPIO_Num > 28) {
 
         return -1;
 
     }
 
-    uint16_t LED = GPIO_Pin;
+    gpio_put(GPIO_Num, true);
 
-    gpio_init(LED);
-
-    gpio_set_dir(LED, true);
-
-    gpio_put(LED, true);
+    GPIO_is_on = true;
 
     return 0;
 
 }
 
-int Pico_and_LED::turn_LED_off(int GPIO_Pin) {
+int Pico_and_LED::turn_LED_off() {
 
-    if(GPIO_Pin < 0 && GPIO_Pin > 28) {
+    if(GPIO_Num < 0 && GPIO_Num > 28) {
 
         return -1;
 
     }
 
-    uint16_t LED = GPIO_Pin;
+    gpio_put(GPIO_Num, false);
 
-    gpio_init(LED);
-
-    gpio_set_dir(LED, true);
-
-    gpio_put(LED, false);
+    GPIO_is_on = false;
 
     return 0;
 
 }
 
-int Pico_and_LED::let_LED_blink(int GPIO_Pin, float frequency, int stop) {
+int Pico_and_LED::get_LED_state() {
 
-    if(GPIO_Pin < 0 && GPIO_Pin > 28) {
+    if(GPIO_Num < 0 && GPIO_Num > 28) {
+
+        return -1;
+
+    }
+
+    if(GPIO_is_on = true) {
+
+        return 1;
+
+    }
+
+    else {
+
+        return 0;
+
+    }
+
+}
+
+int Pico_and_LED::let_LED_blink(float frequency, int stop) {
+
+    if(GPIO_Num < 0 && GPIO_Num > 28) {
 
         return -1;
 
@@ -54,17 +78,11 @@ int Pico_and_LED::let_LED_blink(int GPIO_Pin, float frequency, int stop) {
 
     }
 
-    if(stop <= -2 || stop == 0) {
+    if(stop < -1 || stop == 0) {
 
         return -3;
 
     }
-
-    uint16_t LED = GPIO_Pin;
-
-    gpio_init(LED);
-
-    gpio_set_dir(LED, true);
 
     int i = 0;
 
@@ -72,11 +90,11 @@ int Pico_and_LED::let_LED_blink(int GPIO_Pin, float frequency, int stop) {
 
         while(i == 0) {
 
-        gpio_put(LED, true);
+        gpio_put(GPIO_Num, true);
 
         sleep_ms((frequency * 1000) / 2);
 
-        gpio_put(LED, false);
+        gpio_put(GPIO_Num, false);
 
         sleep_ms((frequency * 1000) / 2);
 
@@ -85,11 +103,11 @@ int Pico_and_LED::let_LED_blink(int GPIO_Pin, float frequency, int stop) {
 
     while(i < stop) {
 
-        gpio_put(LED, true);
+        gpio_put(GPIO_Num, true);
 
         sleep_ms((frequency * 1000) / 2);
 
-        gpio_put(LED, false);
+        gpio_put(GPIO_Num, false);
 
         sleep_ms((frequency * 1000) / 2);
 
@@ -97,5 +115,8 @@ int Pico_and_LED::let_LED_blink(int GPIO_Pin, float frequency, int stop) {
 
     }
 
+    GPIO_is_on = false;
+
     return 0;
+    
 }

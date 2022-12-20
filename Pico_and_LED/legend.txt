@@ -1,15 +1,23 @@
 functions:
 
-	int	turn_LED_on(int GPIO_Pin)
+	Pico_and_LED(int GPIO_Pin)
+
+	explanation:
+
+		Initialize a LED Object.
+
+	variables:
+
+		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
+
+	------------------------------------------------------------------------------------------------------
+
+	int	turn_LED_on()
 	
 	explanation:
 
 		Turning a LED on.
 
-	variables:
-
-		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
-
 	returns:
 
 		-1		= GPIO_Pin is not between 0 and 28.
@@ -17,16 +25,12 @@ functions:
 
 	------------------------------------------------------------------------------------------------------
 
-	int	turn_LED_off(int GPIO_Pin)
+	int	turn_LED_off()
 
 	explanation:
 
 		Turning a LED off.
 
-	variables:
-
-		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
-
 	returns:
 
 		-1		= GPIO_Pin is not between 0 and 28.
@@ -34,7 +38,7 @@ functions:
 
 	------------------------------------------------------------------------------------------------------
 
-	int	let_LED_blink(int GPIO_Pin, float frequency, int stop)
+	int	let_LED_blink(float frequency, int stop)
 
 	explanation:
 
@@ -42,9 +46,8 @@ functions:
 
 	variables:
 
-		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
 		frequency	= The frequency in hertz in which the LED should blink in.
-		stop            = The number after how many blinks the loop should stop. If it is "-1" the LED will blink forever.
+		stop		= The number after how many blinks the loop should stop. If it is "-1" the LED will blink forever.
 
 	returns:
 
