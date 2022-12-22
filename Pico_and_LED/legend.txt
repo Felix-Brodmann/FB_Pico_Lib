@@ -47,8 +47,8 @@ functions:
 	returns:
 
 		-1		= GPIO_Pin is not between 0 and 28.
-		0		= LED is on.
-		1		= LED is off.
+		0		= LED is off.
+		1		= LED is on.
 
 	------------------------------------------------------------------------------------------------------
 
