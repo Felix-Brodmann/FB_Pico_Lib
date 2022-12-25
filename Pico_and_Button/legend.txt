@@ -1,14 +1,22 @@
 functions:
 
-	bool	is_pressed(int GPIO_Pin)
-	
+	Pico_and_Button(int GPIO_Pin)
+
 	explanation:
 
-		Checking if a Button is pressed.
+		Initialize a Button Object.
 
 	variables:
 
 		GPIO_Pin	= GPIO Number of the LED. Caution! Pin number is not the GP number.
+
+	------------------------------------------------------------------------------------------------------
+
+	bool	is_pressed()
+	
+	explanation:
+
+		Checking if a Button is pressed.
 
 	returns:
 
