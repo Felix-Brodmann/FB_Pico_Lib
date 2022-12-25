@@ -2,8 +2,14 @@
 
 class Pico_and_Button {
 
+private:
+
+    int GPIO_Num = -1;
+
 public:
 
-    bool is_pressed(int GPIO_Pin);
+    Pico_and_Button(int GPIO_Pin);
+
+    bool is_pressed();
 
 };
