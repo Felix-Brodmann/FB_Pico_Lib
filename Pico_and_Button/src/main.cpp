@@ -6,13 +6,11 @@ int main() {
     
     stdio_init_all();
 
-    Pico_and_Button Button;
-    
-    uint GPIO_number = 16;
+    Pico_and_Button Button(16);
 
     while(1) {
 
-        if(Button.is_pressed(GPIO_number) = true) {
+        if(Button.is_pressed() = true) {
 
             printf("Button pressed\n");
 
