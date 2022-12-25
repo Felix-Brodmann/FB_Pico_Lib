@@ -14,7 +14,7 @@ bool Pico_and_Button::is_pressed() {
 
     if(GPIO_Num < 0 && GPIO_Num > 28) {
 
-        return -1;
+        return false;
 
     }
 
