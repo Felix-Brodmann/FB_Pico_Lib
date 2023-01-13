@@ -1,0 +1,16 @@
+functions:
+
+	float	readTemperatur(char unit)
+	
+	explanation:
+
+		Reading the temperature-value of the onboard temperature-sensor of the RP2040.
+
+	variables:
+
+		unit	= This is the temperature-unit. Either 'c' for Celsius or 'f' for Fahrenheit
+
+	returns:
+
+		0		= Either exactly 0 degree, but most probably the unit was not 'c' or 'f'
+		> 0 <		= Temperature-value.
